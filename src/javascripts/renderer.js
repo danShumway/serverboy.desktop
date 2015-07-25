@@ -33,7 +33,9 @@ module.exports = {
         //Set up blank image data.
         for (index=0; index < imgData.data.length; index++) {
             imgData.data[index] = 0xFF;
-        }
+        };
+
+        //
     },
 
     /**

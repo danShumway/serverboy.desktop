@@ -1,6 +1,7 @@
 var fs = require('fs'),
     Gameboy = require('serverboy'),
-    renderer = require(window.constants.paths.javascripts + 'renderer');
+    renderer = require(window.constants.paths.javascripts + 'renderer'),
+    controls = require(window.constants.paths.javascripts + 'controls');
 
 //Used internally to maintain operation.
 var internals = {
@@ -40,6 +41,7 @@ var loadROM = function(file_path) {
 var running = false;
 var loop = function(mainWindow) {
     piglet();
+    internals.gameboy_instance.pressKeys( controls.getKeys() );
     internals.gameboy_instance.doFrame();
 
     //Send screen  Should work?
@@ -55,6 +57,7 @@ window.start = function() {
     loadROM("./ROM/jumpman.gbc");
 
     renderer.init('screen');
+    controls.init('screen');
     console.log(piglet.toString());
     running = true;
     loop();
