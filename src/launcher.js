@@ -1,6 +1,6 @@
-var app = require('app');
-var BrowserWindow = require('browser-window');
-var client = require('src/index'); //Note, if this isn't getting imported, try double quotes?
+var app = require('app'),
+    BrowserWindow = require('browser-window');
+    //client = require("./src/index"); //Note, if this isn't getting imported, try double quotes?
 
 //report crashes.
 require('crash-reporter').start();
@@ -19,7 +19,10 @@ app.on('ready', function() {
     mainWindow.loadUrl('file://' + __dirname + '/index.html');
     mainWindow.openDevTools();
 
+
     mainWindow.on('closed', function() {
         mainWindow = null;
     });
+
+    //client(mainWindow);
 })
